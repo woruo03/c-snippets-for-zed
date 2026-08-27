@@ -45,7 +45,7 @@ seamlessly:
 ```json
 [
     {
-        "context": "Editor && (snippet_active || showing_completions)",
+        "context": "Editor",
         "bindings": {
             "ctrl-j": "editor::NextSnippetTabstop",
             "ctrl-k": "editor::PreviousSnippetTabstop"
