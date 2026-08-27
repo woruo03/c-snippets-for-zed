@@ -1,0 +1,123 @@
+{
+    "C main": {
+        "prefix": "main",
+        "description": "C main function with stdio",
+        "body": [
+            "#include <stdio.h>",
+            "",
+            "int main(void) {",
+            "\t$0",
+            "\treturn 0;",
+            "}"
+        ]
+    },
+    "include header": {
+        "prefix": "include",
+        "description": "include a C header",
+        "body": [
+            "#include <$1>",
+            "$0"
+        ]
+    },
+    "indexed for loop": {
+        "prefix": "fori",
+        "description": "indexed for loop",
+        "body": [
+            "for (int $1 = 0; $1 < $2; $1++) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "while loop": {
+        "prefix": "while",
+        "description": "while loop",
+        "body": [
+            "while ($1) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "if else": {
+        "prefix": "ifelse",
+        "description": "if else block",
+        "body": [
+            "if ($1) {",
+            "\t$0",
+            "} else {",
+            "\t$2",
+            "}"
+        ]
+    },
+    "C function": {
+        "prefix": "fn",
+        "description": "C function definition",
+        "body": [
+            "$1 $2($3) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "printf": {
+        "prefix": "printf",
+        "description": "print formatted output",
+        "body": [
+            "printf(\"$1\\n\"$2);",
+            "$0"
+        ]
+    },
+    "scanf": {
+        "prefix": "scanf",
+        "description": "read formatted input",
+        "body": [
+            "scanf(\"$1\", &$2);",
+            "$0"
+        ]
+    },
+    "typedef struct": {
+        "prefix": "struct",
+        "description": "typedef struct definition",
+        "body": [
+            "typedef struct $1 {",
+            "\t$2",
+            "} $3;",
+            "$0"
+        ]
+    },
+    "malloc": {
+        "prefix": "malloc",
+        "description": "allocate memory with malloc",
+        "body": [
+            "$1 *$2 = malloc(sizeof($1) * $3);",
+            "if ($2 == NULL) {",
+            "\treturn -1;",
+            "}",
+            "$0",
+            "free($2);"
+        ]
+    },
+    "switch": {
+        "prefix": "switch",
+        "description": "switch statement",
+        "body": [
+            "switch ($1) {",
+            "case $2:",
+            "\t$0",
+            "\tbreak;",
+            "default:",
+            "\tbreak;",
+            "}"
+        ]
+    },
+    "C header guard": {
+        "prefix": "guard",
+        "description": "C header include guard",
+        "body": [
+            "#ifndef $1",
+            "#define $1",
+            "",
+            "$0",
+            "",
+            "#endif /* $1 */"
+        ]
+    }
+}

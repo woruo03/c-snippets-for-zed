@@ -1,0 +1,8 @@
+id = "c-snippets"
+name = "C Snippets"
+version = "0.0.1"
+schema_version = 1
+authors = ["woruo03 <woruo03@gmail.com>"]
+description = "C snippets for the Zed IDE."
+repository = "https://github.com/woruo03/c-snippets-for-zed"
+snippets = ["./snippets/c.json"]
