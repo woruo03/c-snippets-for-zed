@@ -3,8 +3,6 @@
         "prefix": "main",
         "description": "C main function with stdio",
         "body": [
-            "#include <stdio.h>",
-            "",
             "int main(void) {",
             "\t$0",
             "\treturn 0;",
