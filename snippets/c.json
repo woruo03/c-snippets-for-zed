@@ -3,7 +3,7 @@
         "prefix": "main",
         "description": "C main function with stdio",
         "body": [
-            "int main(void) {",
+            "int main(int argc, char* argv[]) {",
             "\t$0",
             "\treturn 0;",
             "}"
