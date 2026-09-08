@@ -8,9 +8,9 @@
 git clone https://github.com/woruo03/c-snippets-for-zed
 ```
 
-1. Go to the Extensions menu in the Zed IDE
-2. Click "Install Dev Extension"
-3. Select the folder you cloned
+2. Go to the Extensions menu in the Zed IDE
+3. Click "Install Dev Extension"
+4. Select the folder you cloned
 
 ## Available Snippets
 
