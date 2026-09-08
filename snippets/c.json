@@ -14,12 +14,11 @@
         "prefix": "include",
         "description": "include a C header",
         "body": [
-            "#include <$1>",
-            "$0"
+            "#include <$0>",
         ]
     },
     "indexed for loop": {
-        "prefix": "fori",
+        "prefix": "for",
         "description": "indexed for loop",
         "body": [
             "for (int $1 = 0; $1 < $2; $1++) {",
