@@ -26,7 +26,7 @@ git clone https://github.com/woruo03/c-snippets-for-zed
 | Prefix    | Description                                                         |
 | --------- | ------------------------------------------------------------------- |
 | `include` | `#include <...>`                                                    |
-| `incs`    | `#include <...>` with placeholder                                   |
+| `inc`     | `#include <...>` with placeholder                                   |
 | `incl`    | `#include "..."` local header                                       |
 | `guard`   | `#ifndef` / `#define` / `#endif` header guard (linked placeholders) |
 | `once`    | `#pragma once` header guard                                         |
@@ -42,8 +42,9 @@ git clone https://github.com/woruo03/c-snippets-for-zed
 | --------- | ---------------------------------------------------------- |
 | `if`      | `if` statement                                             |
 | `ifelse`  | `if`-`else` block                                          |
-| `for`     | Indexed `for` loop (loop variable is a linked placeholder) |
-| `forr`    | Reverse indexed `for` loop                                 |
+| `elif`    | `else if` statement                                        |
+| `for`     | Indexed `for` loop (size_t, linked variable, ++i)          |
+| `forr`    | Reverse indexed `for` loop (int, linked variable, --i)      |
 | `while`   | `while` loop                                               |
 | `dowhile` | `do`-`while` loop                                          |
 | `switch`  | `switch` statement with `default`                          |
@@ -60,11 +61,12 @@ git clone https://github.com/woruo03/c-snippets-for-zed
 
 ### Types
 
-| Prefix   | Description                                               |
-| -------- | --------------------------------------------------------- |
-| `struct` | `typedef struct` definition (tag and typedef name linked) |
-| `enum`   | `typedef enum` definition                                 |
-| `union`  | `typedef union` definition                                |
+| Prefix    | Description                                               |
+| --------- | --------------------------------------------------------- |
+| `struct`  | `struct` definition                                       |
+| `tstruct` | `typedef struct` definition (tag and typedef name linked) |
+| `enum`    | `typedef enum` definition                                 |
+| `union`   | `typedef union` definition                                |
 
 ### Memory
 
@@ -89,12 +91,13 @@ git clone https://github.com/woruo03/c-snippets-for-zed
 
 ### Patterns & Utilities
 
-| Prefix    | Description                                       |
-| --------- | ------------------------------------------------- |
-| `nullchk` | NULL pointer check with error branch              |
-| `assert`  | `assert(condition)` (requires `<assert.h>`)       |
-| `goto`    | `goto`-based cleanup / error-handling pattern     |
-| `strtol`  | `strtol` string-to-long with full error detection |
+| Prefix    | Description                                            |
+| --------- | ------------------------------------------------------ |
+| `nullchk` | NULL pointer check with error branch                   |
+| `assert`  | `assert(condition)` (requires `<assert.h>`)            |
+| `sassert` | `static_assert(condition, message)` (C11 `<assert.h>`) |
+| `goto`    | `goto`-based cleanup / error-handling pattern          |
+| `strtol`  | `strtol` string-to-long with full error detection      |
 
 ## Recommend
 

@@ -4,8 +4,8 @@
         "description": "C main function with argc/argv",
         "body": [
             "int main(int argc, char *argv[]) {",
-            "\t$0",
-            "\treturn 0;",
+            "    $0",
+            "    return 0;",
             "}"
         ]
     },
@@ -14,8 +14,8 @@
         "description": "Simple C main function with no arguments",
         "body": [
             "int main(void) {",
-            "\t$0",
-            "\treturn 0;",
+            "    $0",
+            "    return 0;",
             "}"
         ]
     },
@@ -27,20 +27,20 @@
         ]
     },
     "include system header": {
-        "prefix": "incs",
-        "description": "Include a system C header with placeholder",
+        "prefix": "inc",
+        "description": "Include a system header",
         "body": [
-            "#include <${1:stdio.h}>$0"
+            "#include <$1>$0"
         ]
     },
     "include local header": {
         "prefix": "incl",
-        "description": "Include a local C header",
+        "description": "Include a local header",
         "body": [
-            "#include \"${1:header.h}\"$0"
+            "#include \"$1\"$0"
         ]
     },
-    "C header guard": {
+    "header guard": {
         "prefix": "guard",
         "description": "C header include guard",
         "body": [
@@ -104,7 +104,7 @@
         "description": "if statement",
         "body": [
             "if (${1:condition}) {",
-            "\t$0",
+            "    $0",
             "}"
         ]
     },
@@ -113,19 +113,27 @@
         "description": "if-else block",
         "body": [
             "if (${1:condition}) {",
-            "\t$2",
+            "    $2",
             "} else {",
-            "\t$3",
-            "}",
-            "$0"
+            "    $0",
+            "}"
+        ]
+    },
+    "else if": {
+        "prefix": "elif",
+        "description": "else if statement",
+        "body": [
+            "else if (${1:condition}) {",
+            "    $0",
+            "}"
         ]
     },
     "indexed for loop": {
         "prefix": "for",
         "description": "Indexed for loop",
         "body": [
-            "for (int ${1:i} = 0; ${1:i} < ${2:n}; ${1:i}++) {",
-            "\t$0",
+            "for (${1:size_t} ${2:i} = 0; ${2:i} < ${3:n}; ++${2:i}) {",
+            "    $0",
             "}"
         ]
     },
@@ -133,8 +141,8 @@
         "prefix": "forr",
         "description": "Reverse indexed for loop",
         "body": [
-            "for (int ${1:i} = ${2:n} - 1; ${1:i} >= 0; ${1:i}--) {",
-            "\t$0",
+            "for (${1:int} ${2:i} = ${3:n} - 1; ${2:i} >= 0; --${2:i}) {",
+            "    $0",
             "}"
         ]
     },
@@ -143,7 +151,7 @@
         "description": "while loop",
         "body": [
             "while (${1:condition}) {",
-            "\t$0",
+            "    $0",
             "}"
         ]
     },
@@ -152,21 +160,21 @@
         "description": "do-while loop",
         "body": [
             "do {",
-            "\t$1",
+            "    $1",
             "} while (${2:condition});",
             "$0"
         ]
     },
     "switch": {
         "prefix": "switch",
-        "description": "switch statement",
+        "description": "switch statement with default",
         "body": [
             "switch (${1:expr}) {",
-            "case ${2:value}:",
-            "\t$0",
-            "\tbreak;",
-            "default:",
-            "\tbreak;",
+            "    case ${2:value}:",
+            "        $0",
+            "        break;",
+            "    default:",
+            "        break;",
             "}"
         ]
     },
@@ -175,8 +183,8 @@
         "description": "switch case with break",
         "body": [
             "case ${1:value}:",
-            "\t$0",
-            "\tbreak;"
+            "    $0",
+            "    break;"
         ]
     },
     "C function": {
@@ -184,7 +192,7 @@
         "description": "C function definition",
         "body": [
             "${1:void} ${2:name}(${3:void}) {",
-            "\t$0",
+            "    $0",
             "}"
         ]
     },
@@ -193,7 +201,7 @@
         "description": "Static C function definition",
         "body": [
             "static ${1:void} ${2:name}(${3:void}) {",
-            "\t$0",
+            "    $0",
             "}"
         ]
     },
@@ -211,12 +219,21 @@
             "typedef ${1:void} (*${2:fn_t})(${3:void});$0"
         ]
     },
-    "typedef struct": {
+    "struct": {
         "prefix": "struct",
+        "description": "Struct definition",
+        "body": [
+            "struct ${1:name} {",
+            "    $0",
+            "};"
+        ]
+    },
+    "typedef struct": {
+        "prefix": "tstruct",
         "description": "typedef struct definition",
         "body": [
             "typedef struct ${1:name} {",
-            "\t$2",
+            "    $2",
             "} ${1:name}_t;",
             "$0"
         ]
@@ -226,7 +243,7 @@
         "description": "typedef enum definition",
         "body": [
             "typedef enum {",
-            "\t${1:VALUE}",
+            "    ${1:VALUE}",
             "} ${2:name}_t;",
             "$0"
         ]
@@ -236,7 +253,7 @@
         "description": "typedef union definition",
         "body": [
             "typedef union {",
-            "\t$1",
+            "    $1",
             "} ${2:name}_t;",
             "$0"
         ]
@@ -247,7 +264,7 @@
         "body": [
             "${1:type} *${2:ptr} = malloc(sizeof(${1:type}) * ${3:count});",
             "if (${2:ptr} == NULL) {",
-            "\t${4:return -1;}",
+            "    ${4:return -1;}",
             "}",
             "$0",
             "free(${2:ptr});"
@@ -259,7 +276,7 @@
         "body": [
             "${1:type} *${2:ptr} = calloc(${3:count}, sizeof(${1:type}));",
             "if (${2:ptr} == NULL) {",
-            "\t${4:return -1;}",
+            "    ${4:return -1;}",
             "}",
             "$0",
             "free(${2:ptr});"
@@ -271,7 +288,7 @@
         "body": [
             "${1:type} *${2:tmp} = realloc(${3:ptr}, sizeof(${1:type}) * ${4:count});",
             "if (${2:tmp} == NULL) {",
-            "\t${5:return -1;}",
+            "    ${5:return -1;}",
             "}",
             "${3:ptr} = ${2:tmp};",
             "$0"
@@ -332,8 +349,8 @@
         "body": [
             "FILE *${1:fp} = fopen(\"${2:filename}\", \"${3:r}\");",
             "if (${1:fp} == NULL) {",
-            "\tperror(\"fopen\");",
-            "\t${4:return -1;}",
+            "    perror(\"fopen\");",
+            "    ${4:return -1;}",
             "}",
             "$0",
             "fclose(${1:fp});"
@@ -344,7 +361,7 @@
         "description": "Check a pointer for NULL and handle the error",
         "body": [
             "if (${1:ptr} == NULL) {",
-            "\t${2:return -1;}",
+            "    ${2:return -1;}",
             "}",
             "$0"
         ]
@@ -356,17 +373,24 @@
             "assert(${1:condition});$0"
         ]
     },
+    "static_assert": {
+        "prefix": "sassert",
+        "description": "static_assert with message (requires <assert.h> in C11)",
+        "body": [
+            "static_assert(${1:condition}, \"${2:message}\");$0"
+        ]
+    },
     "goto error handling": {
         "prefix": "goto",
         "description": "goto-based cleanup/error handling pattern",
         "body": [
             "if (${1:condition}) {",
-            "\tgoto ${2:err};",
+            "    goto ${2:err};",
             "}",
             "$0",
             "",
             "${2:err}:",
-            "\t${3:/* cleanup */}"
+            "    ${3:/* cleanup */}"
         ]
     },
     "strtol": {
@@ -376,7 +400,7 @@
             "char *${3:endptr};",
             "long ${2:val} = strtol(${1:str}, &${3:endptr}, ${4:10});",
             "if (${3:endptr} == ${1:str} || *${3:endptr} != '\\0') {",
-            "\t$0",
+            "    $0",
             "}"
         ]
     }
