@@ -3,14 +3,9 @@
 ## Installation
 
 1. Clone this repo:
-
-```shell
-git clone https://github.com/woruo03/c-snippets-for-zed
-```
-
-2. Go to the Extensions menu in the Zed IDE
-3. Click "Install Dev Extension"
-4. Select the folder you cloned
+1. Go to the Extensions menu in the Zed IDE
+1. Click "Install Dev Extension"
+1. Select the folder you cloned
 
 ## Available Snippets
 
@@ -38,17 +33,17 @@ git clone https://github.com/woruo03/c-snippets-for-zed
 
 ### Control Flow
 
-| Prefix    | Description                                                |
-| --------- | ---------------------------------------------------------- |
-| `if`      | `if` statement                                             |
-| `ifelse`  | `if`-`else` block                                          |
-| `elif`    | `else if` statement                                        |
-| `for`     | Indexed `for` loop (size_t, linked variable, ++i)          |
-| `forr`    | Reverse indexed `for` loop (int, linked variable, --i)      |
-| `while`   | `while` loop                                               |
-| `dowhile` | `do`-`while` loop                                          |
-| `switch`  | `switch` statement with `default`                          |
-| `case`    | Single `case` label with `break`                           |
+| Prefix    | Description                                            |
+| --------- | ------------------------------------------------------ |
+| `if`      | `if` statement                                         |
+| `ifelse`  | `if`-`else` block                                      |
+| `elif`    | `else if` statement                                    |
+| `for`     | Indexed `for` loop (size_t, linked variable, ++i)      |
+| `forr`    | Reverse indexed `for` loop (int, linked variable, --i) |
+| `while`   | `while` loop                                           |
+| `dowhile` | `do`-`while` loop                                      |
+| `switch`  | `switch` statement with `default`                      |
+| `case`    | Single `case` label with `break`                       |
 
 ### Functions
 
